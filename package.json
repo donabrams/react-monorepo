@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "find . -name '*.test.js' | xargs ./node_modules/.bin/mocha --compilers js:babel-register",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "build": "gulp build"
   },
   "author": "",
   "license": "ISC",
@@ -20,9 +21,16 @@
     "eslint": "^2.7.0",
     "eslint-plugin-react": "^4.3.0",
     "eslint-plugin-require-in-package": "^1.0.3",
+    "findup-sync": "^0.4.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-debug": "^2.1.2",
     "gulp-encapsulate-css": "^1.0.1",
     "gulp-eslint": "^2.0.0",
-    "mocha": "^2.4.5"
+    "gulp-if": "^2.0.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-util": "^3.0.7",
+    "mocha": "^2.4.5",
+    "through2": "^2.0.1"
   }
 }

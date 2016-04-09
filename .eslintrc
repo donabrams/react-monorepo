@@ -59,7 +59,7 @@
     "prefer-rest-params": 2,
     "prefer-spread": 2,
     "prefer-template": 2,
-    "quotes": [2, "single", "avoid-escape"],
+    "quotes": [1, "single", "avoid-escape"],
     "radix": 2,
     "react/display-name": 2,
     "react/jsx-boolean-value": [2, "always"],

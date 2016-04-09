@@ -1,1 +1,2 @@
 import './lint'
+import './build'
