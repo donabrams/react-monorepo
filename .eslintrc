@@ -26,7 +26,7 @@
     "indent": [2, 2, {"SwitchCase": 1}],
     "jsx-quotes": [2, "prefer-double"],
     "keyword-spacing": 1,
-    "max-params": ["error", 2],
+    "max-params": ["error", 3],
     "new-cap": [2, {"capIsNew": false}],
     "no-alert": 2,
     "no-bitwise": 2,

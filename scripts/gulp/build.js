@@ -4,8 +4,8 @@ import gulpIf from 'gulp-if'
 import through from 'through2'
 import findup from 'findup-sync'
 import nodePath from 'path'
-import debug from 'gulp-debug'
-import child_process from 'child_process'
+//import debug from 'gulp-debug'
+import childProcess from 'child_process'
 import fs from 'fs'
 import {Readable} from 'stream'
 import gutil from 'gulp-util'
@@ -47,23 +47,23 @@ gulp.task('create-release-package', function() {
 // path:  ~/workspace/balance-react/src/@allovue/test/testView.js
 //
 function rebaseToPackageJson(packages) {
-  return through.obj(function(file, encoding, callback) {
+  return through.obj(function(file, encoding, emitFileToStream) {
     if (!file.isNull()) {
       const nearestPackageJsonPath = findup('package.json', {cwd: nodePath.dirname(file.path)})
       const packageName = packages[nodePath.relative(file.cwd, nearestPackageJsonPath)].name
       const filePathInternalToPackage = nodePath.relative(nodePath.dirname(nearestPackageJsonPath), file.path)
       const newFilePath = nodePath.join(file.base, packageName, filePathInternalToPackage)
       file.path = newFilePath
-      callback(null, file)
+      emitFileToStream(null, file)
     } else {
-      callback(null, null)
+      emitFileToStream(null, null)
     }
   })
 }
 
 // returns a object where the key is a package.json path and the object is the contents of the package.json
 function getPackageJsons(path) {
-  const packagePaths = child_process.execSync(`find ${path} -name package.json`).toString().split('\n');
+  const packagePaths = childProcess.execSync(`find ${path} -name package.json`).toString().split('\n')
   const packages = packagePaths
     .filter((path)=>path.length)
     .reduce((packagesAcc, path)=> {
@@ -94,7 +94,7 @@ function getReleasePackage(packages) {
         if (prevModuleVersion && prevModuleVersion !== moduleVersion) {
           throw new Error(`devDependency "${moduleName}" : "${moduleVersion}" in "${packagePath}" conflicts with previously required version "${prevModuleVersion}"`)
         }
-        dependeciesAcc[moduleName] = moduleVersion;
+        dependeciesAcc[moduleName] = moduleVersion
         return dependeciesAcc
       }, releasePackage.devDependencies)
 
