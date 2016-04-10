@@ -34,16 +34,16 @@ gulp.task('create-release-package', function() {
 // This function flattens the vinyl files based on the nearest package.json:
 //
 // [15:34:06] gulp-debug:
-// cwd:   ~/workspace/balance-react
-// base:  ~/workspace/balance-react/src/
-// path:  ~/workspace/balance-react/src/components/test/testView.js
+// cwd:   ~/workspace/react-monorepo
+// base:  ~/workspace/react-monorepo/src/
+// path:  ~/workspace/react-monorepo/src/components/test/testView.js
 //
-// with nearest `package.json` at `~/workspace/balance-react/src/test/package.json` and the package is named `@allovue/test` to
+// with nearest `package.json` at `~/workspace/react-monorepo/src/test/package.json` and the package is named `@donabrams/test` to
 //
 // [15:34:06] gulp-debug:
-// cwd:   ~/workspace/balance-react
-// base:  ~/workspace/balance-react/src/
-// path:  ~/workspace/balance-react/src/@allovue/test/testView.js
+// cwd:   ~/workspace/react-monorepo
+// base:  ~/workspace/react-monorepo/src/
+// path:  ~/workspace/react-monorepo/src/@donabrams/test/testView.js
 //
 function rebaseToPackageJson(packages) {
   return through.obj(function(file, encoding, emitFileToStream) {
@@ -99,7 +99,7 @@ function getReleasePackage(packages) {
 
       return releasePackage
     }, {
-      name: 'release',
+      name: 'react-monorepo-release',
       version: '0.0.1',
       dependencies: {},
       devDependencies: {},
