@@ -25,8 +25,7 @@ gulp.task('compile-src', function() {
 
 gulp.task('create-release-package', function() {
   const packages = getPackageJsons('src')
-  const releasePackage = getReleasePackage(packages)
-  const releasePackageJson = JSON.stringify(releasePackage, null, 2)
+  const releasePackageJson = JSON.stringify(getReleasePackage(packages), null, 2)
   return createVinylFileStreamForString('package.json', releasePackageJson)
     .pipe(gulp.dest('dist'))
 })
