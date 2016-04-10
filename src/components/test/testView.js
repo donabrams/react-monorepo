@@ -1,6 +1,13 @@
+// @flow
+
 import React, {PropTypes} from 'react'
 
-export default function TestView({a, b}) {
+type TestViewProps = {
+  a: string;
+  b: boolean;
+};
+
+export default function TestView({a, b}: TestViewProps): React.Element {
   return (
     <div>
       <span>{a}</span>
@@ -9,7 +16,4 @@ export default function TestView({a, b}) {
   )
 }
 
-TestView.propTypes = {
-  a: PropTypes.string,
-  b: PropTypes.string.isRequired,
-}
+const testClass = <TestView foo="string" /> // should error

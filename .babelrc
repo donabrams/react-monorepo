@@ -1,4 +1,4 @@
 {
     "presets": ["es2015", "react"],
-    "plugins": ["encapsulate-jsx"]
+    "plugins": ["transform-flow-strip-types", "encapsulate-jsx"]
 }
