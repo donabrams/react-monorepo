@@ -99,7 +99,7 @@ function getReleasePackage(packages) {
 
       return releasePackage
     }, {
-      name: 'release',
+      name: 'balance-react-release',
       version: '0.0.1',
       dependencies: {},
       devDependencies: {},
