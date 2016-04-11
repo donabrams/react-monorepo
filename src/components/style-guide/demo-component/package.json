@@ -1,14 +1,15 @@
 {
-  "name": "@donabrams/test2",
+  "name": "@donabrams/demo-component",
   "version": "1.0.0",
   "description": "",
-  "main": "testView.js",
+  "main": "DemoComponentApp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^15.0.1"
+    "react": "^15.0.1",
+    "recompose": "^0.16.0"
   }
 }

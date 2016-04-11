@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react'
+import React, {PropTypes} from "react"
 
-export default function TestView({a, b}) {
+export default function ExampleComponentView({a, b}) {
   return (
     <div>
       <span>{a}</span>
@@ -9,7 +9,7 @@ export default function TestView({a, b}) {
   )
 }
 
-TestView.propTypes = {
+ExampleComponentView.propTypes = {
   a: PropTypes.string,
   b: PropTypes.string.isRequired,
 }

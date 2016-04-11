@@ -1,0 +1,16 @@
+[
+  {
+    "label": "State 1: Hello World",
+    "props": {
+      "a": "Hello",
+      "b": "World"
+    }
+  },
+  {
+    "label": "State 2: Hola Earthling",
+    "props": {
+      "a": "Hola",
+      "b": "Earthling"
+    }
+  }
+]

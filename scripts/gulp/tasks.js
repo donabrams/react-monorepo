@@ -1,2 +1,2 @@
-import './lint'
-import './build'
+import "./lint"
+import "./build"

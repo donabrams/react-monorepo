@@ -1,0 +1,16 @@
+{
+  "name": "@donabrams/style-guide-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "StyleGuidePageApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@donabrams/demo-component": "^1.0.0",
+    "react": "^15.0.1",
+    "recompose": "^0.17.0"
+  }
+}
