@@ -1,0 +1,13 @@
+{
+  "name": "style-guide-application",
+  "version": "1.0.0",
+  "cartridges": {
+    "@donabrams/style-guide-cartridge": "1.0.0"
+  },
+  "appConfig": {
+    "entryPoint": "*",
+    "cartridges": [
+      "@donabrams/style-guide-cartridge"
+    ]
+  }
+}
