@@ -5,6 +5,7 @@ import childProcess from "child_process"
 import fs from "fs"
 import {Readable} from "stream"
 import gutil from "gulp-util"
+import semver from "semver";
 
 //
 // This function flattens the vinyl files based on the nearest package.json:
@@ -53,12 +54,17 @@ export function getPackageJsons(path) {
 export function getReleasePackage(packages) {
   return Object.keys(packages)
     .reduce((releasePackage, packagePath) => {
-      const {dependencies={}, devDependencies={}} = packages[packagePath]
+      const {dependencies={}, devDependencies={}, appConfig, name, version} = packages[packagePath]
+
+      if (releasePackage.dependencies[name] && !semver.satisfies(version, releasePackage.dependencies[name])) {
+        throw new Error(`package "${name}" : "${version}" in "${packagePath}" conflicts with previously required version "${releasePackage.dependencies[name]}"`)
+      }
+      releasePackage.dependencies[name] = version;
 
       releasePackage.dependencies = Object.keys(dependencies).reduce((dependeciesAcc, moduleName)=>{
         const moduleVersion = dependencies[moduleName]
         const prevModuleVersion = dependeciesAcc[moduleName]
-        if (prevModuleVersion && prevModuleVersion !== moduleVersion) {
+        if (prevModuleVersion && !semver.satisfies(prevModuleVersion, moduleVersion)) {
           throw new Error(`dependency "${moduleName}" : "${moduleVersion}" in "${packagePath}" conflicts with previously required version "${prevModuleVersion}"`)
         }
         dependeciesAcc[moduleName] = moduleVersion
@@ -75,12 +81,17 @@ export function getReleasePackage(packages) {
         return dependeciesAcc
       }, releasePackage.devDependencies)
 
+      if (appConfig) {
+        releasePackage.applications[name] = appConfig
+      }
+
       return releasePackage
     }, {
       name: "react-monorepo-release",
       version: "0.0.1",
       dependencies: {},
       devDependencies: {},
+      applications: {},
     })
 }
 

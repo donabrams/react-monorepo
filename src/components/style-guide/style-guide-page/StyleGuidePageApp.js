@@ -11,5 +11,5 @@ export default compose(
     return {
       chooseComponent: (component) => setDisplayedComponent(()=>component),
     }
-  }),
+  })
 )(StyleGuideView)

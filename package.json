@@ -6,7 +6,9 @@
   "scripts": {
     "test": "find . -name '*.test.js' | xargs ./node_modules/.bin/mocha --compilers js:babel-register",
     "lint": "gulp lint",
-    "build": "gulp build"
+    "build": "gulp build",
+    "generate-self-signed-certs": "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=localhost'",
+    "dev-server": "HTTPS_KEY=key.pem HTTPS_CERT=cert.pem NODE_PATH=$(pwd)/dist/node_modules node -e 'require(\"@donabrams/dev-server\").default()'"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +33,7 @@
     "gulp-shell": "^0.5.2",
     "gulp-util": "^3.0.7",
     "mocha": "^2.4.5",
+    "semver": "^5.1.0",
     "through2": "^2.0.1"
   }
 }
